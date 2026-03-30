@@ -1,30 +1,26 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.LinkedHashSet;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
-        System.out.println("UC5: Booking Request Queue (FIFO)");
+        System.out.println("UC5: Preserve Insertion Order using LinkedHashSet");
 
-        // Queue for booking requests
-        Queue<String> bookingQueue = new LinkedList<>();
+        // LinkedHashSet for bogies
+        LinkedHashSet<String> train = new LinkedHashSet<>();
 
-        // Adding booking requests
-        bookingQueue.add("Request 1 - Sleeper");
-        bookingQueue.add("Request 2 - AC Chair");
-        bookingQueue.add("Request 3 - First Class");
+        // Adding bogies
+        train.add("Engine");
+        train.add("Sleeper");
+        train.add("Cargo");
+        train.add("Guard");
 
-        // Display queue
-        System.out.println("Booking Requests in Queue:");
-        System.out.println(bookingQueue);
+        // Duplicate attempt
+        train.add("Sleeper");
 
-        // Processing (just showing FIFO)
-        System.out.println("Processing Request: " + bookingQueue.poll());
-
-        // Remaining queue
-        System.out.println("Remaining Requests:");
-        System.out.println(bookingQueue);
+        // Display final formation
+        System.out.println("Final Train Formation:");
+        System.out.println(train);
     }
 }
