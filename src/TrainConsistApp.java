@@ -1,28 +1,30 @@
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
+        System.out.println("UC5: Booking Request Queue (FIFO)");
 
-        LinkedList<String> train = new LinkedList<>();
+        // Queue for booking requests
+        Queue<String> bookingQueue = new LinkedList<>();
 
-        // Add bogies
-        train.add("Engine");
-        train.add("Sleeper");
-        train.add("AC");
-        train.add("Cargo");
-        train.add("Guard");
+        // Adding booking requests
+        bookingQueue.add("Request 1 - Sleeper");
+        bookingQueue.add("Request 2 - AC Chair");
+        bookingQueue.add("Request 3 - First Class");
 
-        // Insert Pantry at position 2
-        train.add(2, "Pantry");
+        // Display queue
+        System.out.println("Booking Requests in Queue:");
+        System.out.println(bookingQueue);
 
-        // Remove first and last
-        train.removeFirst();
-        train.removeLast();
+        // Processing (just showing FIFO)
+        System.out.println("Processing Request: " + bookingQueue.poll());
 
-        // Display final consist
-        System.out.println("Final Train Consist: " + train);
+        // Remaining queue
+        System.out.println("Remaining Requests:");
+        System.out.println(bookingQueue);
     }
 }
