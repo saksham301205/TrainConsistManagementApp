@@ -1,29 +1,28 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Room Search & Availability ===");
+        System.out.println("=== Train Consist Management App ===");
 
-        // Inventory (room type → availability)
-        Map<String, Integer> inventory = new HashMap<>();
-        inventory.put("Single", 5);
-        inventory.put("Double", 0);
-        inventory.put("Suite", 3);
+        LinkedList<String> train = new LinkedList<>();
 
-        // Room details (price)
-        Map<String, Integer> price = new HashMap<>();
-        price.put("Single", 2000);
-        price.put("Double", 3500);
-        price.put("Suite", 5000);
+        // Add bogies
+        train.add("Engine");
+        train.add("Sleeper");
+        train.add("AC");
+        train.add("Cargo");
+        train.add("Guard");
 
-        // Display available rooms (read-only)
-        for (String room : inventory.keySet()) {
-            if (inventory.get(room) > 0) {
-                System.out.println(room + " | Price: " + price.get(room) + " | Available: " + inventory.get(room));
-            }
-        }
+        // Insert Pantry at position 2
+        train.add(2, "Pantry");
+
+        // Remove first and last
+        train.removeFirst();
+        train.removeLast();
+
+        // Display final consist
+        System.out.println("Final Train Consist: " + train);
     }
 }
