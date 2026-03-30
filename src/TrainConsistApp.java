@@ -11,7 +11,7 @@ class Bogie {
     }
 
     public String toString() {
-        return name + " -> " + capacity;
+        return name + "(" + capacity + ")";
     }
 }
 
@@ -20,23 +20,23 @@ public class TrainConsistApp {
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
-        System.out.println("UC8: Filter Bogies using Streams");
+        System.out.println("UC9: Group Bogies by Type");
 
-        // Original list (same as UC7)
+        // List of bogies
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("Sleeper", 70));
         bogies.add(new Bogie("First Class", 24));
 
-        // Filter using Stream (capacity > 60)
-        List<Bogie> filtered = bogies.stream()
-                .filter(b -> b.capacity > 60)
-                .collect(Collectors.toList());
+        // Grouping using Stream
+        Map<String, List<Bogie>> grouped =
+                bogies.stream()
+                        .collect(Collectors.groupingBy(b -> b.name));
 
-        // Display result
-        System.out.println("Filtered Bogies (capacity > 60):");
-        for (Bogie b : filtered) {
-            System.out.println(b);
+        // Display grouped data
+        for (String key : grouped.keySet()) {
+            System.out.println(key + " -> " + grouped.get(key));
         }
     }
 }
